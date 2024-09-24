@@ -13,6 +13,8 @@ module.exports = function(eleventyConfig) {
     return content;
   });
 
+  eleventyConfig.addPassthroughCopy({ "public/**/*": "." });
+
   return {
     dir: {
       input: "src",
