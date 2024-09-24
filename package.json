@@ -4,7 +4,14 @@
   "description": "Source code of the seo.zmoki.xyz website",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "clean": "rimraf dist",
+    "eleventy:build": "ELEVENTY_ENV=production eleventy",
+    "eleventy:serve": "eleventy --serve",
+    "css:build": "NODE_ENV=production postcss src/styles.css -o dist/styles.css",
+    "css:watch": "postcss src/styles.css -o dist/styles.css --watch",
+    "build": "npm run clean && npm run eleventy:build && npm run css:build",
+    "serve": "npm run clean && npm run eleventy:serve & npm run css:watch"
   },
   "repository": {
     "type": "git",
@@ -15,5 +22,14 @@
   "bugs": {
     "url": "https://github.com/Zmoki/seo.zmoki.xyz/issues"
   },
-  "homepage": "https://github.com/Zmoki/seo.zmoki.xyz#readme"
+  "homepage": "https://github.com/Zmoki/seo.zmoki.xyz#readme",
+  "devDependencies": {
+    "@11ty/eleventy": "^2.0.1",
+    "autoprefixer": "^10.4.20",
+    "cssnano": "^7.0.6",
+    "html-minifier": "^4.0.0",
+    "postcss": "^8.4.47",
+    "postcss-cli": "^11.0.0",
+    "rimraf": "^6.0.1"
+  }
 }
